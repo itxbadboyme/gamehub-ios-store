@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Game Details - GameHub</title>
+    <meta name="description" content="Download and play amazing mobile games with the best iOS-inspired experience.">
+    <meta name="theme-color" content="#007AFF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=-apple-system,BlinkMacSystemFont,SF Pro Display,SF Pro Text,Helvetica Neue,Helvetica,Arial,sans-serif');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            /* iOS Colors */
+            --ios-blue: #007AFF;
+            --ios-blue-dark: #0056CC;
+            --ios-blue-light: #4DA6FF;
+            --ios-green: #34C759;
+            --ios-orange: #FF9500;
+            --ios-red: #FF3B30;
+            --ios-purple: #AF52DE;
+            --ios-pink: #FF2D92;
+            --ios-yellow: #FFCC00;
+            --ios-teal: #5AC8FA;
+            --ios-indigo: #5856D6;
+            
+            /* Light Theme */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F2F2F7;
+            --bg-tertiary: #F9F9FB;
+            --bg-elevated: #FFFFFF;
+            --bg-grouped: #F2F2F7;
+            --bg-card: #FFFFFF;
+            
+            --text-primary: #000000;
+            --text-secondary: #6D6D80;
+            --text-tertiary: #8E8E93;
+            --text-link: #007AFF;
+            
+            --border-primary: #D1D1D6;
+            --border-secondary: #E5E5EA;
+            --separator: #E5E5EA;
+            
+            --fill-primary: #767680;
+            --fill-secondary: #78788033;
+            --fill-tertiary: #7676801F;
+            --fill-quaternary: #74748014;
+            
+            /* Shadows */
+            --shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-secondary: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+            
+            /* Blur Effects */
+            --blur-primary: blur(20px);
+            --blur-secondary: blur(40px);
+            
+            /* Animation Curves */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+            --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-primary: #000000;
+            --bg-secondary: #1C1C1E;
+            --bg-tertiary: #2C2C2E;
+            --bg-elevated: #1C1C1E;
+            --bg-grouped: #000000;
+            --bg-card: #1C1C1E;
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #8E8E93;
+            --text-tertiary: #6D6D80;
+            --text-link: #0A84FF;
+            
+            --border-primary: #38383A;
+            --border-secondary: #2C2C2E;
+            --separator: #38383A;
+            
+            --fill-primary: #787880;
+            --fill-secondary: #78788066;
+            --fill-tertiary: #7676803D;
+            --fill-quaternary: #74748029;
+            
+            /* Dark Shadows */
+            --shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-secondary: 0 2px 8px rgba(0, 0, 0, 0.25);
+            --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.2);
+            
+            --ios-blue: #0A84FF;
+            --ios-blue-dark: #0056CC;
+            --ios-blue-light: #4DA6FF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.4;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 435px;
+            margin: 0 auto;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .app-container {
+            width: 100%;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            position: relative;
+            padding-bottom: 100px;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 435px;
+            height: 88px;
+            background: var(--bg-primary);
+            backdrop-filter: var(--blur-primary);
+            border-bottom: 1px solid var(--separator);
+            z-index: 1000;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 20px 12px;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .header-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            background: var(--fill-tertiary);
+            border: none;
+            border-radius: 16px;
+            color: var(--ios-blue);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .back-btn:hover {
+            background: var(--fill-secondary);
+            transform: translateY(-1px);
+        }
+
+        .back-btn:active {
+            transform: scale(0.9);
+            background: var(--fill-primary);
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-btn {
+            width: 32px;
+            height: 32px;
+            background: var(--fill-tertiary);
+            border: none;
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .header-btn:hover {
+            background: var(--fill-secondary);
+            transform: translateY(-1px);
+        }
+
+        .header-btn:active {
+            transform: scale(0.9);
+            background: var(--fill-primary);
+        }
+
+        .header-btn.active {
+            color: var(--ios-red);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 108px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* Game Hero */
+        .game-hero {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 24px;
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            animation: slideInUp 0.8s var(--ease-spring);
+        }
+
+        .game-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-purple) 100%);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            margin: 0 auto 24px;
+            box-shadow: var(--shadow-elevated);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            animation: iconGlow 4s ease-in-out infinite;
+        }
+
+        .game-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .game-developer {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 28px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .play-trailer-btn {
+            background: var(--fill-tertiary);
+            border: none;
+            color: var(--ios-blue);
+            padding: 14px 24px;
+            border-radius: 22px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+
+        .play-trailer-btn:hover {
+            background: var(--fill-secondary);
+            transform: translateY(-1px);
+        }
+
+        .play-trailer-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Screenshots Section */
+        .screenshots-section {
+            animation: slideInUp 0.8s var(--ease-spring) 0.1s both;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .screenshots-gallery {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 8px 0 16px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .screenshots-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot {
+            flex: 0 0 180px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-purple) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .screenshot:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .screenshot:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        /* Game Info Section */
+        .game-info-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            animation: slideInUp 0.8s var(--ease-spring) 0.2s both;
+        }
+
+        .game-description {
+            margin-bottom: 24px;
+        }
+
+        .description-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--ios-blue);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .read-more-btn:hover {
+            opacity: 0.7;
+        }
+
+        .read-more-btn:active {
+            transform: scale(0.95);
+        }
+
+        .game-features {
+            margin-bottom: 24px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .feature-item {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s var(--ease-out);
+        }
+
+         .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .feature-icon {
+            color: var(--ios-blue);
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            animation: slideInUp 0.8s var(--ease-spring) 0.3s both;
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .overall-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 2px;
+            color: var(--ios-orange);
+        }
+
+        .rating-score {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .rating-count {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .review-item {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .review-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reviewer-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-purple) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .reviewer-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 2px;
+            color: var(--ios-orange);
+            font-size: 12px;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* Requirements Section */
+        .requirements-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            animation: slideInUp 0.8s var(--ease-spring) 0.4s both;
+        }
+
+        .requirements-tabs {
+            display: flex;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 20px;
+        }
+
+        .req-tab {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .req-tab.active {
+            background: var(--bg-primary);
+            color: var(--ios-blue);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .req-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .req-content {
+            display: none;
+        }
+
+        .req-content.active {
+            display: block;
+        }
+
+        .req-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--separator);
+        }
+
+        .req-item:last-child {
+            border-bottom: none;
+        }
+
+        .req-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .req-value {
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Similar Games Section */
+        .similar-games-section {
+            animation: slideInUp 0.8s var(--ease-spring) 0.5s both;
+        }
+
+        .similar-games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .similar-game-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out);
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-card);
+        }
+
+        .similar-game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .similar-game-card:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .similar-game-image {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-purple) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .similar-game-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .similar-game-info {
+            padding: 16px;
+        }
+
+        .similar-game-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .similar-game-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--ios-orange);
+            font-size: 12px;
+        }
+
+        /* Fixed Bottom Bar */
+        .fixed-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 435px;
+            background: var(--bg-primary);
+            backdrop-filter: var(--blur-primary);
+            border-top: 1px solid var(--separator);
+            padding: 16px 20px 32px;
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .download-btn {
+            flex: 1;
+            background: var(--ios-blue);
+            color: white;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .download-btn:hover {
+            background: var(--ios-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .download-btn:active {
+            transform: scale(0.96);
+        }
+
+        .download-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .wishlist-bottom-btn {
+            background: var(--fill-tertiary);
+            border: none;
+            color: var(--text-primary);
+            padding: 16px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 56px;
+        }
+
+        .wishlist-bottom-btn:hover {
+            background: var(--fill-secondary);
+            transform: translateY(-1px);
+        }
+
+        .wishlist-bottom-btn:active {
+            transform: scale(0.9);
+        }
+
+        .wishlist-bottom-btn.active {
+            background: var(--ios-red);
+            color: white;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--fill-quaternary);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--ios-blue);
+            border-radius: 3px;
+            transition: width 0.3s var(--ease-out);
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: var(--blur-secondary);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background: var(--fill-tertiary);
+            border: none;
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s var(--ease-out);
+        }
+
+        .lightbox-close:hover {
+            background: var(--fill-secondary);
+        }
+
+        .lightbox-close:active {
+            transform: scale(0.9);
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: var(--bg-card);
+            border: 1px solid var(--border-secondary);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-elevated);
+            backdrop-filter: var(--blur-primary);
+            animation: toastSlideIn 0.4s var(--ease-spring);
+            pointer-events: auto;
+            max-width: 300px;
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--ios-green);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--ios-red);
+        }
+
+        .toast-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .toast.success .toast-icon {
+            color: var(--ios-green);
+        }
+
+        .toast.error .toast-icon {
+            color: var(--ios-red);
+        }
+
+        .toast-message {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes iconGlow {
+            0%, 100% {
+                opacity: 0.3;
+                transform: rotate(0deg);
+            }
+            50% {
+                opacity: 0.6;
+                transform: rotate(180deg);
+            }
+        }
+
+        @keyframes toastSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        @keyframes toastSlideOut {
+            to {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px) scale(0.95);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 375px) {
+            .main-content {
+                padding: 108px 16px 20px;
+            }
+            
+            .header {
+                padding: 0 16px 12px;
+            }
+            
+            .game-title {
+                font-size: 22px;
+            }
+            
+            .similar-games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus indicators */
+        .back-btn:focus,
+        .header-btn:focus,
+        .play-trailer-btn:focus,
+        .read-more-btn:focus,
+        .req-tab:focus,
+        .download-btn:focus,
+        .wishlist-bottom-btn:focus {
+            outline: 2px solid var(--ios-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="back-btn" onclick="goBack()" aria-label="Go back">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h1 class="header-title">Game Details</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="shareGame()" aria-label="Share game">
+                        <i class="fas fa-share"></i>
+                    </button>
+                    <button class="header-btn" onclick="toggleWishlist()" aria-label="Add to wishlist" id="wishlistBtn">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="header-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <i class="fas fa-moon" id="themeIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Game Hero -->
+            <section class="game-hero">
+                <div class="game-icon" id="gameIcon">🎮</div>
+                <h1 class="game-title" id="gameTitle">Cyber Quest 2077</h1>
+                <div class="game-developer" id="gameDeveloper">FutureTech Studios</div>
+                
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">
+                            <i class="fas fa-star"></i>
+                            <span id="gameRating">4.8</span>
+                        </div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">
+                            <i class="fas fa-download"></i>
+                            <span id="gameDownloads">2.5M</span>
+                        </div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">
+                            <i class="fas fa-tag"></i>
+                            <span id="gamePrice">Free</span>
+                        </div>
+                        <div class="stat-label">Price</div>
+                    </div>
+                </div>
+                
+                <button class="play-trailer-btn" onclick="playTrailer()">
+                    <i class="fas fa-play"></i>
+                    Watch Trailer
+                </button>
+            </section>
+
+            <!-- Screenshots Gallery -->
+            <section class="screenshots-section">
+                <h2 class="section-title">Screenshots</h2>
+                <div class="screenshots-gallery">
+                    <div class="screenshot" onclick="openLightbox('screenshot1')">📱</div>
+                    <div class="screenshot" onclick="openLightbox('screenshot2')">🎮</div>
+                    <div class="screenshot" onclick="openLightbox('screenshot3')">🎯</div>
+                    <div class="screenshot" onclick="openLightbox('screenshot4')">⚔️</div>
+                    <div class="screenshot" onclick="openLightbox('screenshot5')">🏆</div>
+                </div>
+            </section>
+
+            <!-- Game Info -->
+            <section class="game-info-section">
+                <div class="game-description">
+                    <h2 class="section-title">About This Game</h2>
+                    <p class="description-text" id="gameDescription">
+                        Embark on an epic adventure in Cyber Quest 2077, a futuristic action RPG set in a dystopian cyberpunk world. 
+                        Experience stunning visuals, immersive gameplay, and a gripping storyline that will keep you on the edge of your seat.
+                    </p>
+                    <button class="read-more-btn" onclick="toggleDescription()">Read More</button>
+                </div>
+
+                <div class="game-features">
+                    <h3 class="section-title">Key Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-gamepad feature-icon"></i>
+                            <span class="feature-text">Immersive Gameplay</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-eye feature-icon"></i>
+                            <span class="feature-text">Stunning Graphics</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users feature-icon"></i>
+                            <span class="feature-text">Multiplayer Mode</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-trophy feature-icon"></i>
+                            <span class="feature-text">Achievements</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cloud feature-icon"></i>
+                            <span class="feature-text">Cloud Save</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt feature-icon"></i>
+                            <span class="feature-text">Mobile Optimized</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Requirements -->
+            <section class="requirements-section">
+                <h2 class="section-title">System Requirements</h2>
+                <div class="requirements-tabs">
+                    <button class="req-tab active" onclick="switchTab('minimum')">Minimum</button>
+                    <button class="req-tab" onclick="switchTab('recommended')">Recommended</button>
+                    <button class="req-tab" onclick="switchTab('mobile')">Mobile</button>
+                </div>
+                
+                <div class="req-content active" id="minimum">
+                    <div class="req-item">
+                        <span class="req-label">Operating System</span>
+                        <span class="req-value">iOS 12.0+</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">RAM</span>
+                        <span class="req-value">3 GB</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Storage</span>
+                        <span class="req-value">4 GB</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Processor</span>
+                        <span class="req-value">A11 Bionic</span>
+                    </div>
+                </div>
+                
+                <div class="req-content" id="recommended">
+                    <div class="req-item">
+                        <span class="req-label">Operating System</span>
+                        <span class="req-value">iOS 15.0+</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">RAM</span>
+                        <span class="req-value">6 GB</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Storage</span>
+                        <span class="req-value">8 GB</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Processor</span>
+                        <span class="req-value">A15 Bionic</span>
+                    </div>
+                </div>
+                
+                <div class="req-content" id="mobile">
+                    <div class="req-item">
+                        <span class="req-label">Network</span>
+                        <span class="req-value">WiFi/5G Required</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Battery</span>
+                        <span class="req-value">Optimized</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Controls</span>
+                        <span class="req-value">Touch & Controller</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="req-label">Orientation</span>
+                        <span class="req-value">All Orientations</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reviews -->
+            <section class="reviews-section">
+                <div class="reviews-header">
+                    <h2 class="section-title">Reviews & Ratings</h2>
+                    <div class="overall-rating">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-score">4.8</span>
+                        <span class="rating-count">(1,234 reviews)</span>
+                    </div>
+                </div>
+                
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">J</div>
+                                <span class="reviewer-name">John Doe</span>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            Amazing game! The graphics are incredible and the gameplay is so smooth. 
+                            Definitely worth downloading. Can't wait for the next update!
+                        </p>
+                        <div class="review-date">2 days ago</div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">S</div>
+                                <span class="reviewer-name">Sarah Wilson</span>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            Great game overall! Love the storyline and characters. 
+                            Only issue is it drains battery quickly, but expected for such quality.
+                        </p>
+                        <div class="review-date">1 week ago</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Similar Games -->
+            <section class="similar-games-section">
+                <h2 class="section-title">Similar Games</h2>
+                <div class="similar-games-grid">
+                    <a href="#" class="similar-game-card" onclick="loadSimilarGame('Dragon Legends')">
+                        <div class="similar-game-image">🐉</div>
+                        <div class="similar-game-info">
+                            <div class="similar-game-title">Dragon Legends</div>
+                            <div class="similar-game-rating">
+                                <i class="fas fa-star"></i>
+                                4.6
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="similar-game-card" onclick="loadSimilarGame('Space Commander')">
+                        <div class="similar-game-image">🚀</div>
+                        <div class="similar-game-info">
+                            <div class="similar-game-title">Space Commander</div>
+                            <div class="similar-game-rating">
+                                <i class="fas fa-star"></i>
+                                4.5
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="similar-game-card" onclick="loadSimilarGame('Ninja Warriors')">
+                        <div class="similar-game-image">🥷</div>
+                        <div class="similar-game-info">
+                            <div class="similar-game-title">Ninja Warriors</div>
+                            <div class="similar-game-rating">
+                                <i class="fas fa-star"></i>
+                                4.9
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="similar-game-card" onclick="loadSimilarGame('Magic Realms')">
+                        <div class="similar-game-image">🧙</div>
+                        <div class="similar-game-info">
+                            <div class="similar-game-title">Magic Realms</div>
+                            <div class="similar-game-rating">
+                                <i class="fas fa-star"></i>
+                                4.4
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Fixed Bottom Bar -->
+        <div class="fixed-bottom-bar">
+            <button class="download-btn" onclick="downloadGame()" id="downloadBtn">
+                <i class="fas fa-download"></i>
+                Download
+            </button>
+            <button class="wishlist-bottom-btn" onclick="toggleWishlist()" id="wishlistBottomBtn">
+                <i class="fas fa-heart"></i>
+            </button>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Downloading... 0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="lightboxContent">
+                <h3>Screenshot Preview</h3>
+                <div style="font-size: 4rem; margin: 20px 0;">🎮</div>
+                <p>High-quality game screenshot would be displayed here in a real implementation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Game data
+        const gameData = {
+            1: {
+                id: 1,
+                title: "Cyber Quest 2077",
+                developer: "FutureTech Studios",
+                rating: 4.8,
+                downloads: "2.5M",
+                price: "Free",
+                icon: "🎮",
+                description: "Embark on an epic adventure in Cyber Quest 2077, a futuristic action RPG set in a dystopian cyberpunk world. Experience stunning visuals, immersive gameplay, and a gripping storyline that will keep you on the edge of your seat. Fight against powerful enemies, customize your character, and explore a vast open world filled with secrets and surprises.",
+                   features: ["Immersive Gameplay", "Stunning Graphics", "Multiplayer Mode", "Achievements", "Cloud Save", "Mobile Optimized"]
+            },
+            2: {
+                id: 2,
+                title: "Dragon Legends",
+                developer: "Epic Games Co",
+                rating: 4.6,
+                downloads: "1.8M",
+                price: "Free",
+                icon: "🐉",
+                description: "Enter the mystical world of Dragon Legends, where ancient dragons rule the skies and magic flows through every realm. Master powerful spells, tame legendary creatures, and embark on quests that will determine the fate of the kingdom.",
+                features: ["Dragon Companions", "Spell Crafting", "Guild System", "PvP Battles", "Story Mode", "Regular Updates"]
+            }
+        };
+
+        // App state
+        let currentGame = null;
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let isDownloading = false;
+        let downloadProgress = 0;
+        let isDescriptionExpanded = false;
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            setTheme(currentTheme);
+            loadGameData();
+            setupEventListeners();
+            updateWishlistUI();
+            
+            // Add smooth entrance animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s var(--ease-out)';
+                document.body.style.opacity = '1';
+            }, 100);
+        }
+
+        function setupEventListeners() {
+            // Touch events for iOS-style feedback
+            setupTouchFeedback();
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', handleKeyDown);
+            
+            // Back button handling
+            window.addEventListener('popstate', handleBackButton);
+            
+            // Prevent default touch behaviors
+            document.addEventListener('touchmove', function(e) {
+                if (e.target.closest('.screenshots-gallery')) {
+                    e.stopPropagation();
+                }
+            }, { passive: false });
+        }
+
+        function setupTouchFeedback() {
+            const interactiveElements = document.querySelectorAll('.download-btn, .wishlist-bottom-btn, .screenshot, .header-btn, .play-trailer-btn, .similar-game-card, .req-tab');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('touchstart', function(e) {
+                    this.style.transition = 'transform 0.1s var(--ease-out)';
+                    this.style.transform = 'scale(0.96)';
+                    
+                    // Haptic feedback for supported devices
+                    if ('vibrate' in navigator) {
+                        navigator.vibrate(10);
+                    }
+                }, { passive: true });
+                
+                element.addEventListener('touchend', function(e) {
+                    setTimeout(() => {
+                        this.style.transition = 'transform 0.2s var(--ease-spring)';
+                        this.style.transform = 'scale(1)';
+                    }, 50);
+                }, { passive: true });
+                
+                element.addEventListener('touchcancel', function(e) {
+                    this.style.transition = 'transform 0.2s var(--ease-out)';
+                    this.style.transform = 'scale(1)';
+                }, { passive: true });
+            });
+        }
+
+        function handleKeyDown(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft' && e.altKey) {
+                goBack();
+            }
+        }
+
+        function handleBackButton() {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                closeLightbox();
+            } else {
+                goBack();
+            }
+        }
+
+        function loadGameData() {
+            // Get game data from localStorage or URL params
+            const selectedGame = localStorage.getItem('selectedGame');
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('id') || '1';
+            
+            if (selectedGame) {
+                currentGame = JSON.parse(selectedGame);
+            } else {
+                currentGame = gameData[gameId] || gameData[1];
+            }
+            
+            // Update UI with game data
+            updateGameUI();
+        }
+
+        function updateGameUI() {
+            document.getElementById('gameIcon').textContent = currentGame.icon;
+            document.getElementById('gameTitle').textContent = currentGame.title;
+            document.getElementById('gameDeveloper').textContent = currentGame.developer;
+            document.getElementById('gameRating').textContent = currentGame.rating;
+            document.getElementById('gameDownloads').textContent = currentGame.downloads;
+            document.getElementById('gamePrice').textContent = currentGame.price;
+            document.getElementById('gameDescription').textContent = currentGame.description;
+            
+            // Update page title
+            document.title = `${currentGame.title} - GameHub`;
+            
+            // Update gradient colors based on game
+            const gameIcon = document.getElementById('gameIcon');
+            const screenshots = document.querySelectorAll('.screenshot');
+            const similarGameImages = document.querySelectorAll('.similar-game-image');
+            
+            const gradientColors = [
+                'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)',
+                'linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)',
+                'linear-gradient(135deg, #A8E6CF 0%, #7FCDCD 100%)',
+                'linear-gradient(135deg, #FFD93D 0%, #FF6B6B 100%)',
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            ];
+            
+            const gradientIndex = currentGame.id % gradientColors.length;
+            const selectedGradient = gradientColors[gradientIndex];
+            
+            gameIcon.style.background = selectedGradient;
+            screenshots.forEach(screenshot => {
+                screenshot.style.background = selectedGradient;
+            });
+            similarGameImages.forEach(image => {
+                image.style.background = selectedGradient;
+            });
+        }
+
+        function goBack() {
+            // Add exit animation
+            document.body.style.transition = 'opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)';
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'translateX(100px)';
+            
+            setTimeout(() => {
+                if (document.referrer && document.referrer.includes(window.location.origin)) {
+                    window.history.back();
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }, 300);
+        }
+
+        function toggleTheme() {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            
+            // Add smooth theme transition
+            document.body.style.transition = 'background-color 0.4s var(--ease-out), color 0.4s var(--ease-out)';
+            
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            const themeIcon = document.getElementById('themeIcon');
+            themeIcon.style.transform = 'rotate(180deg)';
+            
+            setTimeout(() => {
+                themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                themeIcon.style.transform = 'rotate(0deg)';
+            }, 150);
+            
+            // Remove transition after animation
+            setTimeout(() => {
+                document.body.style.transition = '';
+            }, 400);
+        }
+
+        function shareGame() {
+            if (navigator.share) {
+                navigator.share({
+                    title: currentGame.title,
+                    text: `Check out ${currentGame.title} - ${currentGame.description.substring(0, 100)}...`,
+                    url: window.location.href
+                }).then(() => {
+                    showToast('Game shared successfully! 📤', 'success');
+                }).catch((error) => {
+                    if (error.name !== 'AbortError') {
+                        showToast('Share failed', 'error');
+                    }
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const shareText = `Check out ${currentGame.title} on GameHub!`;
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(shareText + ' ' + window.location.href).then(() => {
+                        showToast('Link copied to clipboard! 📋', 'success');
+                    }).catch(() => {
+                        showToast('Failed to copy link', 'error');
+                    });
+                } else {
+                    showToast('Share feature not supported', 'error');
+                }
+            }
+        }
+
+        function toggleWishlist() {
+            const gameId = currentGame.id;
+            const isInWishlist = wishlist.includes(gameId);
+            
+            if (isInWishlist) {
+                wishlist = wishlist.filter(id => id !== gameId);
+                showToast('Removed from wishlist 💔', 'success');
+            } else {
+                wishlist.push(gameId);
+                showToast('Added to wishlist ❤️', 'success');
+            }
+            
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            updateWishlistUI();
+            
+            // Add heart animation
+            const wishlistBtns = document.querySelectorAll('#wishlistBtn, #wishlistBottomBtn');
+            wishlistBtns.forEach(btn => {
+                btn.style.animation = 'heartBeat 0.6s var(--ease-bounce)';
+                setTimeout(() => {
+                    btn.style.animation = '';
+                }, 600);
+            });
+        }
+
+        function updateWishlistUI() {
+            const isInWishlist = wishlist.includes(currentGame.id);
+            const wishlistBtns = document.querySelectorAll('#wishlistBtn, #wishlistBottomBtn');
+            
+            wishlistBtns.forEach(btn => {
+                btn.classList.toggle('active', isInWishlist);
+            });
+        }
+
+        function downloadGame() {
+            if (isDownloading) return;
+            
+            isDownloading = true;
+            downloadProgress = 0;
+            
+            const downloadBtn = document.getElementById('downloadBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            // Show progress container with animation
+            progressContainer.style.display = 'block';
+            progressContainer.style.opacity = '0';
+            progressContainer.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                progressContainer.style.transition = 'opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)';
+                progressContainer.style.opacity = '1';
+                progressContainer.style.transform = 'translateY(0)';
+            }, 100);
+            
+            downloadBtn.disabled = true;
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            
+            // Simulate download progress with realistic timing
+            const downloadInterval = setInterval(() => {
+                const increment = Math.random() * 8 + 2; // 2-10% increments
+                downloadProgress += increment;
+                
+                if (downloadProgress >= 100) {
+                    downloadProgress = 100;
+                    clearInterval(downloadInterval);
+                    completeDownload();
+                }
+                
+                // Smooth progress bar animation
+                progressFill.style.transition = 'width 0.3s var(--ease-out)';
+                progressFill.style.width = downloadProgress + '%';
+                progressText.textContent = `Downloading... ${Math.round(downloadProgress)}%`;
+                
+                // Change color as it progresses
+                if (downloadProgress < 50) {
+                    progressFill.style.background = 'var(--ios-orange)';
+                } else if (downloadProgress < 80) {
+                    progressFill.style.background = 'var(--ios-blue)';
+                } else {
+                    progressFill.style.background = 'var(--ios-green)';
+                }
+            }, 200);
+        }
+
+        function completeDownload() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressText = document.getElementById('progressText');
+            
+            progressText.textContent = 'Download Complete! 🎉';
+            
+            // Hide progress and update button
+            setTimeout(() => {
+                progressContainer.style.transition = 'opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)';
+                progressContainer.style.opacity = '0';
+                progressContainer.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    progressContainer.style.display = 'none';
+                    downloadBtn.disabled = false;
+                    downloadBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+                    downloadBtn.style.background = 'var(--ios-green)';
+                    isDownloading = false;
+                    
+                    showToast('Download completed! Ready to play 🎮', 'success');
+                }, 300);
+            }, 1000);
+        }
+
+        function playTrailer() {
+            // Add button animation
+            const btn = event.target.closest('.play-trailer-btn');
+            btn.style.animation = 'pulse 0.6s var(--ease-out)';
+            
+            setTimeout(() => {
+                btn.style.animation = '';
+                showToast('Trailer playing... 🎬', 'success');
+            }, 600);
+            
+            // In a real app, this would open a video player
+        }
+
+        function switchTab(tabName) {
+            // Update tab buttons with smooth animation
+            document.querySelectorAll('.req-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.onclick.toString().includes(tabName)) {
+                    tab.classList.add('active');
+                    
+                    // Add selection animation
+                    tab.style.animation = 'tabSelect 0.3s var(--ease-out)';
+                    setTimeout(() => {
+                        tab.style.animation = '';
+                    }, 300);
+                }
+            });
+            
+            // Update tab content with fade animation
+            document.querySelectorAll('.req-content').forEach(content => {
+                if (content.classList.contains('active')) {
+                    content.style.opacity = '0';
+                    content.style.transform = 'translateY(10px)';
+                    
+                    setTimeout(() => {
+                        content.classList.remove('active');
+                        document.getElementById(tabName).classList.add('active');
+                        
+                        const newContent = document.getElementById(tabName);
+                        newContent.style.opacity = '0';
+                        newContent.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            newContent.style.transition = 'opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)';
+                            newContent.style.opacity = '1';
+                            newContent.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, 150);
+                }
+            });
+        }
+
+        function toggleDescription() {
+            const descriptionText = document.getElementById('gameDescription');
+            const readMoreBtn = document.querySelector('.read-more-btn');
+            
+            if (!isDescriptionExpanded) {
+                // Expand description
+                const fullDescription = currentGame.description + " Fight against powerful enemies, customize your character, and explore a vast open world filled with secrets and surprises. Master advanced combat techniques, unlock powerful abilities, and make choices that shape your destiny in this immersive gaming experience.";
+                
+                descriptionText.textContent = fullDescription;
+                readMoreBtn.textContent = 'Read Less';
+                isDescriptionExpanded = true;
+                
+                // Smooth expansion animation
+                descriptionText.style.transition = 'all 0.3s var(--ease-out)';
+                descriptionText.style.maxHeight = 'none';
+            } else {
+                // Collapse description
+                descriptionText.textContent = currentGame.description;
+                readMoreBtn.textContent = 'Read More';
+                isDescriptionExpanded = false;
+                
+                // Smooth collapse animation
+                descriptionText.style.maxHeight = '4.8em'; // 3 lines
+            }
+        }
+
+        function openLightbox(screenshotId) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightboxContent');
+            
+            // Add content with animation
+            lightboxContent.innerHTML = `
+                <h3>Screenshot Preview</h3>
+                <div style="font-size: 4rem; margin: 20px 0; animation: bounce 1s var(--ease-bounce);">🎮</div>
+                <p>High-quality game screenshot would be displayed here in a real implementation.</p>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 16px;">
+                    Screenshot ID: ${screenshotId}
+                </p>
+            `;
+            
+            lightbox.style.display = 'flex';
+            lightbox.style.opacity = '0';
+            
+            setTimeout(() => {
+                lightbox.style.transition = 'opacity 0.3s var(--ease-out)';
+                lightbox.style.opacity = '1';
+                lightbox.classList.add('active');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            
+            lightbox.style.transition = 'opacity 0.3s var(--ease-out)';
+            lightbox.style.opacity = '0';
+            
+            setTimeout(() => {
+                lightbox.classList.remove('active');
+                lightbox.style.display = 'none';
+            }, 300);
+        }
+
+        function loadSimilarGame(gameName) {
+            // Add loading animation
+            const cards = document.querySelectorAll('.similar-game-card');
+            cards.forEach(card => {
+                if (card.textContent.includes(gameName)) {
+                    card.style.animation = 'pulse 0.6s var(--ease-out)';
+                    setTimeout(() => {
+                        card.style.animation = '';
+                    }, 600);
+                }
+            });
+            
+            showToast(`Loading ${gameName}... 🎮`, 'success');
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                showToast(`${gameName} loaded successfully! 🎯`, 'success');
+            }, 1500);
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            toast.innerHTML = `
+                <i class="${icon} toast-icon"></i>
+                <span class="toast-message">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                toast.style.animation = 'toastSlideOut 0.3s var(--ease-out) forwards';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Add additional animations
+        const additionalCSS = `
+            @keyframes heartBeat {
+                0%, 100% { transform: scale(1); }
+                25% { transform: scale(1.2); }
+                50% { transform: scale(1.1); }
+                75% { transform: scale(1.15); }
+            }
+            
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+            
+            @keyframes tabSelect {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            
+            @keyframes bounce {
+                0%, 20%, 53%, 80%, 100% {
+                    transform: translateY(0px);
+                }
+                40%, 43% {
+                    transform: translateY(-20px);
+                }
+                70% {
+                    transform: translateY(-10px);
+                }
+                90% {
+                    transform: translateY(-5px);
+                }
+            }
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = additionalCSS;
+        document.head.appendChild(style);
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Game page loaded in ${loadTime.toFixed(2)}ms`);
+        });
+
+        // Battery optimization
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(function(battery) {
+                if (battery.level < 0.2) {
+                    // Reduce animations on low battery
+                    document.documentElement.style.setProperty('--ease-spring', 'ease-out');
+                    document.documentElement.style.setProperty('--ease-bounce', 'ease-out');
+                    console.log('Battery optimization: animations reduced');
+                }
+            });
+        }
+
+        // Network status monitoring
+        window.addEventListener('online', function() {
+            showToast('Connection restored 📶', 'success');
+        });
+
+        window.addEventListener('offline', function() {
+            showToast('No internet connection 📵', 'error');
+        });
+
+        // Page visibility API for performance
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                // Pause animations when page is hidden
+                document.documentElement.style.setProperty('--animation-play-state', 'paused');
+            } else {
+                // Resume animations when page is visible
+                document.documentElement.style.setProperty('--animation-play-state', 'running');
+            }
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            // Clear localStorage item
+            localStorage.removeItem('selectedGame');
+            
+            // Clear any running intervals
+            clearInterval(window.downloadInterval);
+        });
+    </script>
+</body>
+</html>
